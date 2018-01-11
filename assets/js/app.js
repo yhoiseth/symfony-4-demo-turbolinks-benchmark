@@ -6,3 +6,5 @@ import 'bootstrap-sass/assets/javascripts/bootstrap/transition.js';
 
 // loads the code syntax highlighting library
 import './highlight.js';
+
+require('turbolinks').start();
