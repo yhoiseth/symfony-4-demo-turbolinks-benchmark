@@ -24,12 +24,14 @@ class BenchmarkCest
             $selectors[] = 'a[href="' . $path . '"]';
         }
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $I->amOnPage('/');
 
             foreach ($selectors as $selector) {
                 $I->waitForElement($selector);
                 $I->click($selector);
+
+                $I->waitForElement('.sf-toolbar');
             }
         }
     }
