@@ -47,5 +47,14 @@ $ cd symfony-demo/
 $ ./vendor/bin/simple-phpunit
 ```
 
+Benchmark Turbolinks
+--------------------
+
+1. In one tab, `yarn run encore dev --watch`.
+2. In another, `codecept run`.
+3. Remove `require('turbolinks').start();` from `assets/js/app.js`.
+4. `codecept run`.
+5. Compare times spent.
+
 [1]: https://symfony.com/doc/current/reference/requirements.html
 [2]: https://symfony.com/doc/current/cookbook/configuration/web_server_configuration.html
