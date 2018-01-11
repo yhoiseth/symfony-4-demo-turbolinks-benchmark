@@ -8,6 +8,6 @@ actor: AcceptanceTester
 modules:
     enabled:
         - WebDriver:
-            url: http://symfony.test
+            url: http://symfony-demo.test
             browser: chrome
         - \Helper\Acceptance

@@ -11,8 +11,14 @@ class BenchmarkCest
     {
     }
 
-    // tests
-    public function tryToTest(AcceptanceTester $I)
+    public function benchmark(AcceptanceTester $I)
     {
+        $I->amOnPage('/');
+
+        for ($i = 0; $i < 10; $i++) {
+            $I->click('Browse application');
+            $I->click('Pellentesque vitae velit ex');
+            $I->click('Symfony Demo');
+        }
     }
 }
