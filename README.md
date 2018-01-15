@@ -1,5 +1,5 @@
-Symfony Demo Application
-========================
+Turbolinks benchmark with Symfony Demo Application
+==================================================
 
 The "Symfony Demo Application" is a reference application created to show how
 to develop Symfony applications following the recommended best practices.
@@ -14,13 +14,11 @@ Requirements
 Installation
 ------------
 
-Execute this command to install the project:
+Clone the repository and execute this command to install the project:
 
 ```bash
-$ composer create-project symfony/symfony-demo
+$ composer install
 ```
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
 Usage
 -----

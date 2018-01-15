@@ -10,4 +10,5 @@ modules:
         - WebDriver:
             url: http://symfony-demo.test
             browser: chrome
+            restart: true
         - \Helper\Acceptance

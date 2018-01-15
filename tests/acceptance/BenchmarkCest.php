@@ -30,8 +30,6 @@ class BenchmarkCest
             foreach ($selectors as $selector) {
                 $I->waitForElement($selector);
                 $I->click($selector);
-
-                $I->waitForElement('.sf-toolbar');
             }
         }
     }
