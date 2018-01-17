@@ -1,5 +1,7 @@
 <?php
 
+use Facebook\WebDriver\Exception\StaleElementReferenceException;
+use \Facebook\WebDriver\WebDriverElement;
 
 class BenchmarkCest
 {
@@ -11,7 +13,7 @@ class BenchmarkCest
     {
     }
 
-    public function benchmark(AcceptanceTester $I)
+    public function visitOnePostManyTimes(AcceptanceTester $I)
     {
         $paths = [
             '/en/blog/',
@@ -32,5 +34,55 @@ class BenchmarkCest
                 $I->click($selector);
             }
         }
+    }
+
+    public function visitEveryPostOneTime(AcceptanceTester $I)
+    {
+        $I->amOnPage('/');
+        $I->click('Browse application');
+
+        $I = $this->visitAllPostsOnPage($I);
+
+        $I->click('Next →');
+
+        $I = $this->visitAllPostsOnPage($I);
+
+        $I->click('Next →');
+
+        $I = $this->visitAllPostsOnPage($I);
+    }
+
+    /**
+     * @param AcceptanceTester $I
+     * @return AcceptanceTester
+     * @throws Exception
+     */
+    private function visitAllPostsOnPage(AcceptanceTester $I): AcceptanceTester
+    {
+
+        $I->waitForElement('article.post a');
+
+        $staleElement = true;
+
+        while ($staleElement) {
+            try {
+                $postLinks = $I->grabMultiple(
+                    'article.post a'
+                );
+
+                $staleElement = false;
+            } catch (StaleElementReferenceException $exception) {
+                $staleElement = true;
+            }
+        }
+
+        foreach ($postLinks as $postLink) {
+            $I->waitForElement('article.post a');
+            $I->click($postLink);
+            $I->waitForElement('#post-add-comment');
+            $I->moveBack();
+        }
+
+        return $I;
     }
 }
